@@ -1,0 +1,25 @@
+public class Aluno {
+    private String nome;
+    private double nota;
+    private int matricula;
+   
+    public void setNota(double nota){
+        if(nota>=0.0 && nota<=10.0){
+            this.nota=nota;
+            System.out.println("Nota inserida com sucesso.");
+        }else{
+            System.out.println("A nota inserida deve ser de 0.0 a 10.0.");
+        }
+    }
+    public double getNota(){
+        return nota;
+    }
+    public Aluno(int matricula, String nome, int nota){
+        this.matricula= matricula;
+        this.nome = nome;
+        this.nota = nota;
+        
+        System.out.println("Nome: "+nome+"Matricula:"+matricula+"Nota: "+nota);
+    }
+
+}
