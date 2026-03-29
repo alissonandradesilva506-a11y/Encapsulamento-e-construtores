@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+import java.util.List;
+public class Disciplina {
+    protected String nomeDisciplina;
+    protected String professorResponsavel;
+    protected List<Aluno> listaAlunos;
+    
+    public Disciplina(String nomeDisciplina, String professorResponsavel){
+        this.nomeDisciplina = nomeDisciplina;
+        this.professorResponsavel = professorResponsavel;
+        this.listaAlunos = new ArrayList<>();
+    }
+    public void adicionarAluno(Aluno aluno) {
+        this.listaAlunos.add(aluno);
+        System.out.println("Aluno "+ aluno.getNome()+"adicionado a"+ this.nomeDisciplina);
+    }
+    public void listarAlunos(){
+        System.out.println("Lista de Alunos: "+ this.nomeDisciplina);
+        System.out.println("Professor: "+ this.professorResponsavel);
+        if (listaAlunos.isEmpty()){
+            System.out.println("Nenhum aluno cadastrado.");
+        }else{
+            for (Aluno a : listaAlunos) {
+                System.out.println(a.toString());
+            }
+        }
+    }
+    public String getNomeDisciplina() { return nomeDisciplina; }
+    public String getProfessorResponsavel() { return professorResponsavel; }
+}
