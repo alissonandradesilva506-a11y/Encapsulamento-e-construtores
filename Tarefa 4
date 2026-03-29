@@ -1,0 +1,63 @@
+public class Aluno{
+    protected String nome;
+    protected double nota;
+    protected int matricula;
+            
+    public Aluno(int matricula, String nome, double nota){
+        this.matricula= matricula;
+        if (nome == null || nome.trim().isEmpty()) {
+            this.nome = "Aluno Inválido";
+        }else{
+            this.nome = nome;
+        }
+        
+        if(nota<0.0 && nota>10.0){
+            this.nota = 0.0;
+        }else{
+            this.nota = nota;
+        }     
+        this.nota = nota;
+        
+        System.out.println("Nome: "+nome+"Matricula:"+matricula+"Nota: "+nota);
+    }
+    public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            this.nome = "Aluno Inválido";
+        }else{
+        this.nome = nome;
+        }
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setNota(double nota){
+        if(nota<0.0 && nota>10.0){
+            this.nota= 0.0;
+            System.out.println("Nota inválida. A nota deve ser entre 0 e 10.");
+        }else{
+            this.nota = nota;
+            System.out.println("Nota inserida com sucesso.");
+        }
+    }
+    public double getNota(){
+        return nota;
+    }
+    public abstract boolean verificarAprovacao();
+    
+    public class alunoGraduacao extends Aluno {
+        public alunoGraduacao(int matricula, String nome, double nota) {
+        super(matricula, nome, nota);
+    }
+    @Override
+    public boolean verificarAprovacao(){
+        return this.nota >= 7.0;
+    }
+    public class alunoPosGraduacao extends Aluno{
+        public alunoPosGraduacao(int matricula, String nome, double nota) {
+        super(matricula, nome, nota);
+    }
+    @Override
+    public boolean verificarAprovacao(){
+        return this.nota >= 6.0;
+    }
+}    
