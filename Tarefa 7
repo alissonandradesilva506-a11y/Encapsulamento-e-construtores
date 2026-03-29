@@ -1,0 +1,69 @@
+public class Professor {
+    protected String nome;
+    protected String matriculaFuncional;
+    protected double salario;
+    
+    public Professor(String nome, String matriculaFuncional, double salario){
+        this.nome= nome;
+        this.matriculaFuncional = matriculaFuncional;
+        if (salario >= 0){
+        this.salario = salario;
+        }else{
+           this.salario = 0.0;
+           System.out.println("Erro: O salário inicial não pode ser negativo.");
+        }
+    }
+    public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            this.nome = "Nome de professor Inválido";
+        }else{
+        this.nome = nome;
+        }
+    }
+    public String getNome() {
+        return nome;
+    }
+    public void setMatriculaFuncional(String matriculaFuncional){
+        this.matriculaFuncional = matriculaFuncional;
+    }
+    public String getMatriculaFuncional(){
+        return matriculaFuncional;
+    }
+    public void aumentarSalario(double valor){
+        if (valor > 0){
+            this.salario += valor;
+            System.out.println("Salário aumentado com sucesso para: "+ this.salario);
+        }else{
+            System.out.println("Erro: O aumento tem que ser maior que zero.");
+        }
+    }
+    public double getSalario(){
+        return salario;
+    }
+    public class professorEfetivo extends Professor {
+        public professorEfetivo(String nome, String matriculaFuncional, double salario){
+            super(nome, matriculaFuncional, salario);
+        }
+    }
+    public class professorTemporario extends Professor{
+        private int mesesContrato;
+        private int mesesTrabalhados;
+
+        public professorTemporario(String nome, String matriculaFuncional, double salario) {
+            super(nome, matriculaFuncional, salario);
+            this.mesesContrato = mesesContrato;
+            this.mesesTrabalhados = 0;
+        }
+        public void registrarMesesTrabalhados(){
+            this.mesesTrabalhados++;
+        }
+        public void inpedirAumento(double valor){
+            if (this.mesesTrabalhados >= this.mesesContrato){
+                System.out.println("O contrato desse professor está encerrado."
+                        + "Não é possível registrar um aumento.");
+            }else{
+                super.aumentarSalario(valor);
+            }
+        }
+    }
+}
